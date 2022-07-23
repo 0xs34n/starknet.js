@@ -76,6 +76,13 @@ export type Endpoints = {
     REQUEST: never;
     RESPONSE: GetBlockResponse;
   };
+  get_state_update: {
+    QUERY: {
+      blockIdentifier: BlockIdentifier;
+    };
+    REQUEST: never;
+    RESPONSE: GetStateUpdateResponse;
+  };
   call_contract: {
     QUERY: {
       blockIdentifier: BlockIdentifier;
@@ -201,6 +208,39 @@ export type GetBlockResponse = {
 export type GetCodeResponse = {
   bytecode: string[];
   abi: Abi;
+};
+
+type StateDiffItem = {
+  address: string;
+  key: string;
+  value: string;
+};
+
+type DeclaredContractItem = {
+  class_hash: string;
+};
+
+type DeployedContractItem = {
+  address: string;
+  class_hash: string;
+};
+
+type Nonces = {
+  contract_address: string;
+  nonce: BigNumberish;
+};
+
+export type GetStateUpdateResponse = {
+  block_hash: string;
+  new_root: string;
+  old_root: string;
+  accepted_time: number;
+  state_diff: {
+    storage_diffs: Array<StateDiffItem>;
+    declared_contracts: Array<DeclaredContractItem>;
+    deployed_contracts: Array<DeployedContractItem>;
+    nonces: Array<Nonces>;
+  };
 };
 
 export type GetTransactionStatusResponse = {

@@ -106,6 +106,29 @@ Gets the code of the deployed contract.
 
 <hr/>
 
+provider.**GetStateUpdate**(blockIdentifire) => _Promise < GetStateUpdateResponse >_
+
+Gets the block execution information for requested block.
+
+###### _GetStateUpdateResponse_
+
+```
+{
+  block_hash: string;
+  new_root: string;
+  old_root: string;
+  accepted_time: number;
+  state_diff: {
+    storage_diffs: Array<StateDiffItem>;
+    declared_contracts: Array<DeclaredContractItem>;
+    deployed_contracts: Array<DeployedContractItem>;
+    nonces: Array<Nonces>
+  }
+}
+```
+
+<hr/>
+
 provider.**getStorageAt**(contractAddress, key, blockIdentifire) => _Promise < any >_
 
 Gets the contract's storage variable at a specific key

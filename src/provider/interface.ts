@@ -7,6 +7,7 @@ import type {
   GetBlockResponse,
   GetCodeResponse,
   GetContractAddressesResponse,
+  GetStateUpdateResponse,
   GetTransactionResponse,
   GetTransactionStatusResponse,
   Invocation,
@@ -71,6 +72,18 @@ export abstract class ProviderInterface {
     contractAddress: string,
     blockIdentifier?: BlockIdentifier
   ): Promise<GetCodeResponse>;
+
+  /**
+   *  Get the information about the result of executing the requested block
+   *
+   * [Reference](https://github.com/starkware-libs/cairo-lang/blob/167b28bcd940fd25ea3816204fa882a0b0a49603/src/starkware/starknet/services/api/feeder_gateway/feeder_gateway_client.py#L75)
+   *
+   * @param {BlockIdentifier} blockIdentifier - block identifier
+   * @return {Promise<GetStateUpdateResponse>} - block executio object {block_hash, new_root, old_root, accepted_time, state_diff}
+   */
+  public abstract GetStateUpdate?(
+    blockIdentifier?: BlockIdentifier
+  ): Promise<GetStateUpdateResponse>;
 
   // TODO: add proper type
   /**

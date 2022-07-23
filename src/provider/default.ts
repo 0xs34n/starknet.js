@@ -13,6 +13,7 @@ import {
   GetBlockResponse,
   GetCodeResponse,
   GetContractAddressesResponse,
+  GetStateUpdateResponse,
   GetTransactionResponse,
   GetTransactionStatusResponse,
   GetTransactionTraceResponse,
@@ -260,6 +261,18 @@ export class Provider implements ProviderInterface {
     blockIdentifier: BlockIdentifier = 'pending'
   ): Promise<GetCodeResponse> {
     return this.fetchEndpoint('get_code', { blockIdentifier, contractAddress });
+  }
+
+  /**
+   * Same as interface GetStateUpdate
+   *
+   * @param blockIdentifier
+   * @returns {Promise}
+   */
+  public async getStateUpdate(
+    blockIdentifier: BlockIdentifier = null
+  ): Promise<GetStateUpdateResponse> {
+    return this.fetchEndpoint('get_state_update', { blockIdentifier });
   }
 
   // TODO: add proper type

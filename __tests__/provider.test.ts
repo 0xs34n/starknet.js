@@ -67,6 +67,24 @@ describe('defaultProvider', () => {
     test('getCode(blockHash=undefined, blockNumber=null)', () => {
       return expect(provider.getCode(exampleContractAddress)).resolves.not.toThrow();
     });
+
+    test(`getStateUpdate(blockHash=${exampleBlockHash}, blockNumber=undefined)`, async () => {
+      const stateUpdate = await provider.getStateUpdate(exampleBlockHash);
+      expect(stateUpdate).not.toBeNull();
+    });
+    test(`getStateUpdate(blockHash=undefined, blockNumber=${exampleBlockNumber})`, async () => {
+      const stateUpdate = await provider.getStateUpdate(exampleBlockNumber);
+      expect(stateUpdate).not.toBeNull();
+    });
+    test(`getStateUpdate(blockHash=undefined, blockNumber=undefined)`, async () => {
+      const stateUpdate = await provider.getStateUpdate();
+      expect(stateUpdate).not.toBeNull();
+    });
+    test(`getStateUpdate() -> stateUpdate`, async () => {
+      const stateUpdate = await provider.getStateUpdate();
+      expect(stateUpdate).not.toBeNull();
+    });
+
     test('getStorageAt() with "key" type of number', () => {
       return expect(provider.getStorageAt(exampleContractAddress, 0, 36663)).resolves.not.toThrow();
     });
