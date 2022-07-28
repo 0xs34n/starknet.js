@@ -1,5 +1,4 @@
 import urljoin from 'url-join';
-import fetch from 'cross-fetch';
 
 import { ONE, StarknetChainId, ZERO } from '../constants';
 import {
@@ -20,6 +19,7 @@ import {
   Invocation,
   TransactionReceiptResponse,
 } from '../types';
+import fetch from '../utils/fetchPonyfill';
 import { getSelectorFromName } from '../utils/hash';
 import { parse, parseAlwaysAsBig, stringify } from '../utils/json';
 import { BigNumberish, bigNumberishArrayToDecimalStringArray, toBN, toHex } from '../utils/number';
