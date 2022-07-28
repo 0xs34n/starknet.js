@@ -22,7 +22,7 @@ contract.**address** => _string_
 
 The address the contract was constructed/connected with
 
-contract.**providerOrAcount** => ProviderInterface | AccountInterface_
+contract.**providerOrAccount** => _ProviderInterface | AccountInterface_
 
 Provider or account that are used to interact with the network
 

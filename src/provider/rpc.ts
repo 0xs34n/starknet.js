@@ -1,5 +1,3 @@
-import fetch from 'cross-fetch';
-
 import { StarknetChainId } from '../constants';
 import {
   BlockTag,
@@ -18,6 +16,7 @@ import {
   InvokeFunctionResponse,
 } from '../types';
 import { RPC } from '../types/api';
+import fetch from '../utils/fetchPonyfill';
 import { getSelectorFromName } from '../utils/hash';
 import { stringify } from '../utils/json';
 import {
